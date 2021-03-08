@@ -3,7 +3,7 @@
 //  PhoneBook
 //
 //  Created by Hellen Pacheco on 12/13/20.
-//  Copyright Â© 2020 Hellen Pacheco. All rights reserved.
+//  Copyright © 2020 Hellen Pacheco. All rights reserved.
 //
 
 #ifndef Contact_hpp

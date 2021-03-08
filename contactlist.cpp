@@ -3,7 +3,7 @@
  *
  * Lab4: A contact list that is implemented using a linked list
  *
- * Author: Rose Osterheld, Maren Alessandri Lane
+ * Author: Rose Osterheld and Maren Alessandri Lane
  *
  * Group 4: Rose Osterheld, Maren Alessandri Lane, Alex Hagemeister
 
@@ -20,8 +20,15 @@ class PhoneBook : List
     Node *head;
 
   public:
+    /**
+     * Head is always initialized to nullptr. Use insert to add the first
+     * contact
+     */
     PhoneBook() : head(nullptr) {}
 
+    /**
+     * Prints every person in the phonebook
+     */
     void print() const
     {
         Node *currentNode = head;
