@@ -51,7 +51,7 @@ class PhoneBook : List
         Node *currentNode = head;
         while (currentNode != nullptr)
         {
-            cout << currentNode->data;
+            cout << currentNode->data << endl;
             currentNode = currentNode->next;
         }
     }
