@@ -18,6 +18,18 @@ class PhoneBook : List
 {
   private:
     Node *head;
+    /**
+     * helper function for the destructor
+     */
+    void freeList(Node *currentNode)
+    {
+        // finish if the current node is null
+        if (currentNode == nullptr)
+            return;
+        // recursively traverse through list to delete every node
+        freeList(currentNode->next);
+        delete currentNode;
+    }
 
   public:
     /**
@@ -25,6 +37,11 @@ class PhoneBook : List
      * contact
      */
     PhoneBook() : head(nullptr) {}
+
+    /**
+     * Recursively deletes each node to prevent a memory link
+     */
+    ~PhoneBook() { freeList(head); }
 
     /**
      * Prints every person in the phonebook
