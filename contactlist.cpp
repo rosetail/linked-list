@@ -13,6 +13,7 @@
 
 #include "contact.hpp"
 #include <iostream>
+#include <algorithm>
 
 class PhoneBook : List
 {
@@ -36,7 +37,42 @@ class PhoneBook : List
      * Head is always initialized to nullptr. Use insert to add the first
      * contact
      */
-    PhoneBook() : head(nullptr) {}
+    void PhoneBook::insert (const Contact value){  
+        PhoneBook() :: head(nullptr) {}   
+        if (head) {
+            //First check against the head value to see if it should be first
+            if (value < head - > data) {
+                Node Contact *x = new Node Contact;
+                x -> data = value;
+                x -> next = head;
+                head = x; //make x the new head
+            }
+            //keep looking through list
+            Node Contact *y = head;
+            while (y -> next){
+                if (y -> next -> data < value)
+                    y = y -> next;
+                else
+                    break;
+            }
+            //actually insert the node
+            Node Contact *x = new Node Contact;
+            x -> data = value;
+            x -> next = y -> next;
+            y -> next = x;
+        }
+        
+        //If it's the first contact being added
+        else {
+            head = new Node Contact;
+            head -> data = value;
+            head -> next = NULL;
+        }
+    }
+
+    void remove (value){
+        remove (List, value);
+    }
 
     /**
      * Recursively deletes each node to prevent a memory link
