@@ -37,9 +37,10 @@ class PhoneBook : List
      * Head is always initialized to nullptr. Use insert to add the first
      * contact
      */
+    PhoneBook() : head(nullptr) {}
+
     void PhoneBook::insert(const Contact value)
     {
-        PhoneBook()::head(nullptr) {}
         if (head)
         {
             // First check against the head value to see if it should be first
@@ -75,7 +76,7 @@ class PhoneBook : List
         }
     }
 
-    void remove(value) { remove(List, value); }
+    void remove(const Contact value) { remove(List, value); }
 
     /**
      * Recursively deletes each node to prevent a memory link
