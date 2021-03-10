@@ -20,8 +20,9 @@ int main() {
     
     PhoneBook ourPhoneBook; // Instantiation of PhoneBook object to contain contact names & phone numbers
     char userSelection;     // Variable for use in user interface
-    string contactName;
-    int contactNum;
+    Contact newContact;     // Buffer variable to contain new contact details to insert into list
+    string fName;
+    string lName;
     
     /*
      User interface prompts the user to insert a new contact, delete a contact,
@@ -42,21 +43,27 @@ int main() {
     
         switch (userSelection) {
         
+            // FIXED: 'insert new contact' selection now passes initialized Contact to insert function
             case 'i':
                 cout << "Enter contact name to insert: ";
                 cin.ignore();
-                getline(cin, contactName);
+                cin >> newContact.firstName;
+                cin.ignore();
+                cin >> newContact.lastName;
                 cout << "Enter contact phone number: ";
-                cin >> contactNum;
-                ourPhoneBook.insert(contactName, contactNum);
+                cin >> newContact.tel;
+                ourPhoneBook.insert(newContact);
+                
                 break;
                 
+                // FIXED: 'delete' selection now passes first and last name to remove function
             case 'd':
                 cout << "Enter contact name to remove: ";
                 cin.ignore();
-                getline(cin, contactName);
-            
-                ourPhoneBook.remove(contactName);
+                cin >> fName;
+                cin.ignore();
+                cin >> lName;
+                ourPhoneBook.remove(fName, lName);
                 break;
                 
             case 'p':
