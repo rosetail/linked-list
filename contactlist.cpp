@@ -38,22 +38,24 @@ class PhoneBook : List
      */
     PhoneBook() : head(nullptr) {}
 
-    void PhoneBook::insert(const Contact)
+    void insert(const Contact contact)
     {
-        Node *nodeToInsert Node *currentNode = head;
+        Node *nodeToInsert = new Node(contact);
+        Node *currentNode = head;
         while (true)
-            if (currentNode.lastName < nodeToInsert.lastName)
+            if (currentNode->data.lastName < nodeToInsert->data.lastName)
             {
-                InsertAfter(List, currentNode.lastName, nodeToInsert.lastName);
+                InsertAfter(List, currentNode->data.lastName,
+                            nodeToInsert->data.lastName);
                 break;
             }
-        if (currentNode.lastName->nullptr)
+        if (currentNode == nullptr)
         {
             Append(List, nodeToInsert);
         }
     }
 
-    void remove(value) { remove(List, value); }
+    void remove(const Contact contact) { remove(List, contact); }
 
     /**
      * Recursively deletes each node to prevent a memory link
