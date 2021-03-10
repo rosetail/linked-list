@@ -44,25 +44,29 @@ class PhoneBook : List
         Node *nodeToInsert = new Node(contact);
         Node *currentNode = head;
         while (true)
-            if (currentNode -> data.lastName < nodeToInsert -> data.lastName)
+        {
+            if (currentNode->next == nullptr)
             {
-                tempNode = currentNode -> next;
-                currentNode -> next = nodeToInsert;
-                nodeToInsert -> next = tempNode;
+                currentNode->next = nodeToInsert;
+                nodeToInsert->next = tempNode;
                 break;
             }
-            if (currentNode == nullptr)
+            if (currentNode->data.lastName < nodeToInsert->data.lastName)
             {
-                currentNode -> nodeToInsert;
-                nodeToInsert -> nullptr;
+                tempNode = currentNode->next;
+                currentNode->next = nodeToInsert;
+                nodeToInsert->next = tempNode;
+                break;
             }
+        }
     }
 
-    void remove(const Contact contact) { 
+    void remove(const Contact contact)
+    {
         Node *nodeToRemove;
-        
-        nodeToRemove = contact -> next;
-        contact -> next = nodeToRemove -> next;
+
+        nodeToRemove = contact->next;
+        contact->next = nodeToRemove->next;
         delete nodeToRemove;
     }
 
