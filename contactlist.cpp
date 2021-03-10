@@ -12,7 +12,6 @@
  */
 
 #include "contact.hpp"
-#include <algorithm>
 #include <iostream>
 
 class PhoneBook : List
@@ -39,44 +38,22 @@ class PhoneBook : List
      */
     PhoneBook() : head(nullptr) {}
 
-    void PhoneBook::insert(const Contact value)
+    void PhoneBook::insert(const Contact)
     {
-        if (head)
-        {
-            // First check against the head value to see if it should be first
-            if (value < head->data)
+        Node *nodeToInsert Node *currentNode = head;
+        while (true)
+            if (currentNode.lastName < nodeToInsert.lastName)
             {
-                Node Contact *x = new Node Contact;
-                x->data = value;
-                x->next = head;
-                head = x; // make x the new head
+                InsertAfter(List, currentNode.lastName, nodeToInsert.lastName);
+                break;
             }
-            // keep looking through list
-            Node Contact *y = head;
-            while (y->next)
-            {
-                if (y->next->data < value)
-                    y = y->next;
-                else
-                    break;
-            }
-            // actually insert the node
-            Node Contact *x = new Node Contact;
-            x->data = value;
-            x->next = y->next;
-            y->next = x;
-        }
-
-        // If it's the first contact being added
-        else
+        if (currentNode.lastName->nullptr)
         {
-            head = new Node Contact;
-            head->data = value;
-            head->next = NULL;
+            Append(List, nodeToInsert);
         }
     }
 
-    void remove(const Contact value) { remove(List, value); }
+    void remove(value) { remove(List, value); }
 
     /**
      * Recursively deletes each node to prevent a memory link
