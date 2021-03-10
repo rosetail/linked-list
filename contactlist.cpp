@@ -51,7 +51,7 @@ class PhoneBook : List
                 nodeToInsert->next = tempNode;
                 break;
             }
-            if (currentNode->data.lastName < nodeToInsert->data.lastName)
+            if (currentNode->data.lastName > nodeToInsert->data.lastName)
             {
                 tempNode = currentNode->next;
                 currentNode->next = nodeToInsert;
