@@ -61,7 +61,7 @@ class PhoneBook : List
         }
     }
 
-    void remove(const Contact contact)
+    void deleteContact(const Contact contact)
     {
         Node *nodeToRemove;
 

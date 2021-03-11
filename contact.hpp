@@ -59,6 +59,8 @@ class List
     // this function should insert in a way that keeps the list alphabatically
     // organized
     void insert(const Contact value) {}
+    // this function should delete a contact from the list
+    void deleteContact(std::string name) {}
     // this function should prints the whole list
     void print() const {}
 };

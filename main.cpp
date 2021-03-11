@@ -63,8 +63,6 @@ int main()
 
             break;
 
-            // FIXED: 'delete' selection now passes first and last name to
-            // remove function
         case 'd':
             cout << "Enter contact name to remove: ";
             cin.ignore();
@@ -73,7 +71,7 @@ int main()
             cin >> newContact.lastName;
             cout << "Enter contact phone number: ";
             cin >> newContact.tel;
-            ourPhoneBook.remove(newContact);
+            ourPhoneBook.deleteContact(newContact);
             break;
 
         case 'p':
