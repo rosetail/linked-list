@@ -89,7 +89,8 @@ class PhoneBook : List
             if (currentNode->data.firstName == firstName &&
                 currentNode->data.lastName == lastName)
             {
-                // remove the node here
+                // remove currentNode here
+                delete currentNode;
                 return;
             }
             currentNode = currentNode->next;
