@@ -38,18 +38,18 @@ class PhoneBook : List
      */
     PhoneBook() : head(nullptr) {}
 
-    void insert(const Contact contact)
+    void insert(const Contact contact)      //function called to add a contact to the list
     {
-        Node *tempNode;
-        Node *nodeToInsert = new Node(contact);
-        Node *currentNode = head;
+        Node *tempNode;     //node to temporarily hold the moving contact
+        Node *nodeToInsert = new Node(contact);     //the new contact being added in
+        Node *currentNode = head;       //the contact being moved
 
-        if (head == nullptr)
+        if (head == nullptr)    //if there are no contacts yet, the first contact becomes the head
         {
             head = nodeToInsert;
             return;
         }
-        else if (head->data.lastName > nodeToInsert->data.lastName)
+        else if (head->data.lastName > nodeToInsert->data.lastName)     
         {
             tempNode = head;
             head = nodeToInsert;
@@ -66,18 +66,18 @@ class PhoneBook : List
                 nodeToInsert->next = tempNode;
                 return;
             }
-            if (currentNode->next->data.lastName > nodeToInsert->data.lastName)
+            if (currentNode->next->data.lastName > nodeToInsert->data.lastName)     //searches the list to put the new contact in alphabetically
             {
-                tempNode = currentNode->next;
-                currentNode->next = nodeToInsert;
-                nodeToInsert->next = tempNode;
+                tempNode = currentNode->next;               //temporarily holds the moving node do it doesn't get deleted
+                currentNode->next = nodeToInsert;         //inserts the new contact in alphabetically
+                nodeToInsert->next = tempNode;            //puts the moving contact back into the list
                 return;
             }
-            currentNode = currentNode->next;
+            currentNode = currentNode->next;        
         }
     }
 
-    void deleteContact(string name)
+    void deleteContact(string name)     //function called to delete a contact in the list
     {
         int pos = name.find(" "); // position of the first space in name
         string firstName = name.substr(0, pos); // get up to the first space
