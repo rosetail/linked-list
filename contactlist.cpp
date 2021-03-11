@@ -43,6 +43,18 @@ class PhoneBook : List
         Node *tempNode;
         Node *nodeToInsert = new Node(contact);
         Node *currentNode = head;
+
+        if (head == nullptr) {
+            head = nodeToInsert;
+            return;
+        }
+        else if (head->data.lastName > nodeToInsert->data.lastName) {
+            tempNode = head;
+            head = nodeToInsert;
+            nodeToInsert->next = tempNode;
+            return;
+        }
+        
         while (true)
         {
             if (currentNode->next == nullptr)
@@ -51,7 +63,7 @@ class PhoneBook : List
                 nodeToInsert->next = tempNode;
                 break;
             }
-            if (currentNode->data.lastName > nodeToInsert->data.lastName)
+            if (currentNode->next->data.lastName > nodeToInsert->data.lastName)
             {
                 tempNode = currentNode->next;
                 currentNode->next = nodeToInsert;
