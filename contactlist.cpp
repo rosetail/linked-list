@@ -78,10 +78,15 @@ class PhoneBook : List
     void deleteContact(const Contact contact)
     {
         Node *nodeToRemove;
-
-        nodeToRemove = contact->next;
-        contact->next = nodeToRemove->next;
-        delete nodeToRemove;
+        Node *currentNode = head;
+        
+        while (currentNode != nullptr)
+        {
+            nodeToRemove = contact->next;
+            contact->next = nodeToRemove->next;
+            delete nodeToRemove;
+            currentNode = currentNode->next;
+        }
     }
 
     /**
