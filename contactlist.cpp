@@ -84,13 +84,26 @@ class PhoneBook : List
             name.substr(pos + 1); // get from first space to the end
         Node *currentNode = head;
 
-        while (currentNode != nullptr)
+        if (head == nullptr)
+            return;
+
+        if (head->data.firstName == firstName &&
+            head->data.lastName == lastName)
         {
-            if (currentNode->data.firstName == firstName &&
-                currentNode->data.lastName == lastName)
+            Node *tmp = head;
+            head = head->next;
+            delete tmp;
+            return;
+        }
+
+        while (currentNode->next != nullptr)
+        {
+            if (currentNode->next->data.firstName == firstName &&
+                currentNode->next->data.lastName == lastName)
             {
-                // remove currentNode here
-                delete currentNode;
+                Node *tmp = currentNode->next;
+                currentNode->next = currentNode->next->next;
+                delete tmp;
                 return;
             }
             currentNode = currentNode->next;
