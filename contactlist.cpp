@@ -61,6 +61,7 @@ class PhoneBook : List
         {
             if (currentNode->next == nullptr)
             {
+                tempNode = currentNode->next;
                 currentNode->next = nodeToInsert;
                 nodeToInsert->next = tempNode;
                 return;
