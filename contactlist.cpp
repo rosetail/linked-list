@@ -38,18 +38,21 @@ class PhoneBook : List
      */
     PhoneBook() : head(nullptr) {}
 
-    void insert(const Contact contact)      //function called to add a contact to the list
+    void insert(
+        const Contact contact) // function called to add a contact to the list
     {
-        Node *tempNode;     //node to temporarily hold the moving contact
-        Node *nodeToInsert = new Node(contact);     //the new contact being added in
-        Node *currentNode = head;       //the contact being moved
+        Node *tempNode; // node to temporarily hold the moving contact
+        Node *nodeToInsert = new Node(contact); // the new contact being added
+        Node *currentNode = head;               // the contact being moved
 
-        if (head == nullptr)    //if there are no contacts yet, the first contact becomes the head
+        if (head == nullptr) // if there are no contacts yet, the first contact
+                             // becomes the head
         {
             head = nodeToInsert;
             return;
         }
-        else if (head->data.lastName > nodeToInsert->data.lastName)     
+        // make sure we check against head before traversing through the list
+        else if (head->data.lastName > nodeToInsert->data.lastName)
         {
             tempNode = head;
             head = nodeToInsert;
@@ -59,6 +62,7 @@ class PhoneBook : List
 
         while (true)
         {
+            // append if we're at the end of the list
             if (currentNode->next == nullptr)
             {
                 tempNode = currentNode->next;
@@ -66,18 +70,24 @@ class PhoneBook : List
                 nodeToInsert->next = tempNode;
                 return;
             }
-            if (currentNode->next->data.lastName > nodeToInsert->data.lastName)     //searches the list to put the new contact in alphabetically
+            if (currentNode->next->data.lastName >
+                nodeToInsert->data.lastName) // searches the list to put the new
+                                             // contact in alphabetically
             {
-                tempNode = currentNode->next;               //temporarily holds the moving node do it doesn't get deleted
-                currentNode->next = nodeToInsert;         //inserts the new contact in alphabetically
-                nodeToInsert->next = tempNode;            //puts the moving contact back into the list
+                tempNode = currentNode->next; // temporarily holds the moving
+                                              // node do it doesn't get deleted
+                // inserts the new contact in alphabetically
+                currentNode->next = nodeToInsert;
+                // puts the moving contact back into the list
+                nodeToInsert->next = tempNode;
                 return;
             }
-            currentNode = currentNode->next;        
+            currentNode = currentNode->next;
         }
     }
 
-    void deleteContact(string name)     //function called to delete a contact in the list
+    void deleteContact(
+        string name) // function called to delete a contact in the list
     {
         int pos = name.find(" "); // position of the first space in name
         string firstName = name.substr(0, pos); // get up to the first space
@@ -85,9 +95,10 @@ class PhoneBook : List
             name.substr(pos + 1); // get from first space to the end
         Node *currentNode = head;
 
-        if (head == nullptr)
+        if (head == nullptr) // exit if list is empty
             return;
 
+        // check if we need to remove head before traversing
         if (head->data.firstName == firstName &&
             head->data.lastName == lastName)
         {
@@ -97,6 +108,7 @@ class PhoneBook : List
             return;
         }
 
+        // traverse the list to find the correct node
         while (currentNode->next != nullptr)
         {
             if (currentNode->next->data.firstName == firstName &&
