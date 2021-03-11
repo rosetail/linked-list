@@ -72,14 +72,15 @@ class PhoneBook : List
                 nodeToInsert->next = tempNode;
                 break;
             }
+            currentNode = currentNode->next;
         }
     }
 
-    void deleteContact(const Contact contact)
+    void deleteContact(string name)
     {
         Node *nodeToRemove;
         Node *currentNode = head;
-        
+
         while (currentNode != nullptr)
         {
             nodeToRemove = contact->next;
