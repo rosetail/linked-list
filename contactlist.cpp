@@ -63,14 +63,14 @@ class PhoneBook : List
             {
                 currentNode->next = nodeToInsert;
                 nodeToInsert->next = tempNode;
-                break;
+                return;
             }
             if (currentNode->next->data.lastName > nodeToInsert->data.lastName)
             {
                 tempNode = currentNode->next;
                 currentNode->next = nodeToInsert;
                 nodeToInsert->next = tempNode;
-                break;
+                return;
             }
             currentNode = currentNode->next;
         }
@@ -78,14 +78,20 @@ class PhoneBook : List
 
     void deleteContact(string name)
     {
-        Node *nodeToRemove;
+        int pos = name.find(" "); // position of the first space in name
+        string firstName = name.substr(0, pos); // get up to the first space
+        string lastName =
+            name.substr(pos + 1); // get from first space to the end
         Node *currentNode = head;
 
         while (currentNode != nullptr)
         {
-            nodeToRemove = contact->next;
-            contact->next = nodeToRemove->next;
-            delete nodeToRemove;
+            if (currentNode->data.firstName == firstName &&
+                currentNode->data.lastName == lastName)
+            {
+                // remove the node here
+                return;
+            }
             currentNode = currentNode->next;
         }
     }

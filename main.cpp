@@ -64,14 +64,14 @@ int main()
             break;
 
         case 'd':
+            // ALEX: I EDITED THIS. MAKE SURE YOU DON'T WANT TO CHANGE IT
             cout << "Enter contact name to remove: ";
             cin.ignore();
             cin >> newContact.firstName;
             cin.ignore();
             cin >> newContact.lastName;
-            cout << "Enter contact phone number: ";
-            cin >> newContact.tel;
-            ourPhoneBook.deleteContact(newContact);
+            ourPhoneBook.deleteContact(newContact.firstName + " " +
+                                       newContact.lastName);
             break;
 
         case 'p':
